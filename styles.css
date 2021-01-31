@@ -1,0 +1,126 @@
+:root {
+    --dark-blue: #363f5f; /* Caso queria mudar, irá alterar todos que estão usando essa cor */
+}
+
+* {
+    margin: 0;  /*Tirando os espaçamentos padrões*/
+    padding: 0; /*Padding é o preenchimento internos dos elementos*/
+    box-sizing: border-box; /*Como está sendo feito a medida da caixa?*/
+}
+
+body {
+    background: #f0f2f5;
+    font-family: "Poppins", sans-serif;
+}
+
+.container { /*Class*/
+    width: min(90vw, 800px); /* Procura o menor entre os dois valores */
+    margin: auto; /*Margin são os espaços laterais, deixando o que está container balançeado e organiza as laterais*/
+}
+
+h2 {
+    margin-top: 3.2rem;
+    margin-top: 0.8rem;
+    color: var(--dark-blue);
+    font-weight: normal;
+}
+
+header {
+    background: #2d4a22;
+    padding: 2rem 0 10rem; /*2rem em cima e embaixo e nas laterais 0*/
+    text-align: center;
+}
+
+#logo {
+    color: #fff;
+    font-weight: 100;
+}
+
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: white;
+    margin-top: 0;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem 2rem; /* 1.5rem em cima e embaixo e 2 rem nas laterais */
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    /*color: var(--dark-blue); /*var() é uma função onde você pode usar a variável definida no root */ 
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem; /* É a separação de uma linha para outra, para este caso, caso o valor seja muito grande(ex: 5,000.00000000000000000000000) ficará alinhado, sem isso o valor ficaria "dentro de sí mesmo" */
+    margin-top: 1rem; /* Diferença entre p e h3*/  
+}
+
+.card.total { /* Elemento card que tenha a classe total */
+    background-color: #49aa26;
+    color: white;    
+}
+
+/* TABLE  =============================================================== */
+
+#data-table {
+    width: 100%; /* Pegar 100% do container/caixa que está dentro */
+    border-spacing: 0 0.5rem; /* Eixo vertical e Eixo Horizontal*/
+    color: #969cb3;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+    border-radius: 0.25rem 0 0 0.25rem; /* cima direita baixo esquerda */
+
+}
+
+table thead th {
+    background: white;
+    font-weight: normal;
+    padding: 1rem 2rem; /* 1 em cima e embaixo e 2 dos lados */
+    text-align: left;
+}
+
+table tbody tr {
+    opacity: 0.7;
+}
+
+table tbody tr:hover {
+    opacity: 1;
+}
+
+
+table tbody td {
+    background: white;
+    padding: 1rem 2rem;
+}
+
+td.description {
+    color: var(--dark-blue);
+}
+
+td.income {
+    color: #12a454;
+}
+
+td.expense {
+    color: #e92929;
+}
+
+/* FOOTER =============================================================== */
+
+footer {
+    text-align: center;
+    padding: 4rem 0 2rem;
+    color: var(--dark-blue);
+    opacity: 0.6;
+}
