@@ -1,11 +1,19 @@
+/* GLOBAL  =============================================================== */
 :root {
-    --dark-blue: #363f5f; /* Caso queria mudar, irá alterar todos que estão usando essa cor */
+    --dark-blue: #363f5f;  /* Caso queria mudar, irá alterar todos que estão usando essa cor */
+    --green: #49aa26;
+    --light-green: #3dd705;
+    --red: #e92929;
 }
 
 * {
-    margin: 0;  /*Tirando os espaçamentos padrões*/
-    padding: 0; /*Padding é o preenchimento internos dos elementos*/
-    box-sizing: border-box; /*Como está sendo feito a medida da caixa?*/
+    margin: 0;               /* Tirando os espaçamentos padrões*/
+    padding: 0;              /* Padding é o preenchimento internos dos elementos*/
+    box-sizing: border-box;  /*Como está sendo feito a medida da caixa?*/
+}
+
+html {
+    font-size: 93.75%;       /* 15px */
 }
 
 body {
@@ -13,11 +21,25 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
-.container { /*Class*/
-    width: min(90vw, 800px); /* Procura o menor entre os dois valores */
-    margin: auto; /*Margin são os espaços laterais, deixando o que está container balançeado e organiza as laterais*/
+.sr-only {                   /* Classe para remover a visualização desnecessária para nós, porém para não prejudicar a acessibilidade*/
+    position: absolute;      /* absolute serve para sobrepor em relação a sua classe maior*/
+    width: 1px;
+    height: 1px;
+    padding: 0;              /* CSS tricks para esconder da tela*/
+    margin: -1px;            /* CSS tricks para esconder da tela*/
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+
 }
 
+.container {                 /* Class*/
+    width: min(90vw, 800px); /* Procura o menor entre os dois valores */
+    margin: auto;            /* Margin são os espaços laterais, deixando o que está container balançeado e organiza as laterais*/
+}
+
+/* TITLES ================================================================ */
 h2 {
     margin-top: 3.2rem;
     margin-top: 0.8rem;
@@ -25,6 +47,52 @@ h2 {
     font-weight: normal;
 }
 
+/* LINKS & BUTTONS ======================================================= */
+a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--light-green);
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: white;
+    background: var(--green);
+    padding: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--light-green);
+}
+
+.button.new {
+    display: inline-block;   /* Para o link abrir apenas em + Nova Transação*/
+    margin-bottom: .8rem;
+}
+
+.button.cancel {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: 0.25rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+.button.cancel:hover {
+    opacity: 1;
+}
+
+/* HEADER ================================================================== */ 
 header {
     background: #2d4a22;
     padding: 2rem 0 10rem; /*2rem em cima e embaixo e nas laterais 0*/
@@ -36,6 +104,7 @@ header {
     font-weight: 100;
 }
 
+/* BALANCE ================================================================= */
 #balance {
     margin-top: -8rem;
 }
@@ -45,17 +114,22 @@ header {
     margin-top: 0;
 }
 
+/* CARDS =================================================================== */
 .card {
     background: white;
     padding: 1.5rem 2rem; /* 1.5rem em cima e embaixo e 2 rem nas laterais */
     border-radius: 0.25rem;
     margin-bottom: 2rem;
-    /*color: var(--dark-blue); /*var() é uma função onde você pode usar a variável definida no root */ 
+    color: var(--dark-blue); /*var() é uma função onde você pode usar a variável definida no root */ 
 }
 
 .card h3 {
     font-weight: normal;
     font-size: 1rem;
+
+    display: flex; /* Muda o comportamento dos elementos dentro da caixa */
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card p {
@@ -65,22 +139,31 @@ header {
 }
 
 .card.total { /* Elemento card que tenha a classe total */
-    background-color: #49aa26;
+    background-color: var(--green);
     color: white;    
 }
 
-/* TABLE  =============================================================== */
+/* TABLE  ================================================================= */
+#transaction {
+    display: block;
+    width: 100;
+    overflow-x: auto; /* Quando for necessário, criar rolagem do eixo X para a caixa data-table*/
+}
 
 #data-table {
     width: 100%; /* Pegar 100% do container/caixa que está dentro */
     border-spacing: 0 0.5rem; /* Eixo vertical e Eixo Horizontal*/
-    color: #969cb3;
+    color: #969cb3; 
 }
 
 table thead tr th:first-child,
 table tbody tr td:first-child {
-    border-radius: 0.25rem 0 0 0.25rem; /* cima direita baixo esquerda */
+    border-radius: 0.25rem 0 0 0.25rem; /* cima direita baixo esquerda, efeito para ter bordinhas na frente(esquerda) */
+}
 
+table thead tr th:last-child, /* Pseudo class, Pseudo elements */
+table tbody tr td:last-child {
+    border-radius: 0 0.25rem 0.25rem 0; /* Efeito relogio para ter bordinhas atrás(direita)*/
 }
 
 table thead th {
@@ -116,11 +199,83 @@ td.expense {
     color: #e92929;
 }
 
-/* FOOTER =============================================================== */
+/* MODAL ================================================================== */
+.modal-overlay {
+    width: 100%;    /* no width e height está dizendo para ocupar toda tela */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;  
+    top: 0;    /* Deixa essa camada transparente em toda tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    opacity: 0; /* Ele não aparece na tela, mas ocupa o espaço na tela  */
+    visibility: hidden; /* Esconde o espaço dele */
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal { 
+    background: #f0f2f5;
+    padding: 2.4rem;
+}
+
+/* FORM =================================================================== */
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+#form form input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group small {
+    opacity: 0.4;
+}
+
+.input-group.actions {
+    display: flex; /* Para destravar as opções de alinhamento */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+/* FOOTER ================================================================== */
 footer {
     text-align: center;
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
     opacity: 0.6;
+}
+
+/* RESPONSIVE ===========================================*/
+@media (min-width: 800px) { /* A partir de width de 800 aplicar TUDO ISSO DE BAIXO, de width pra baixo você pega TUDO DE CIMA */
+    html {  /* Quando o width minimo for de 800 fazer */
+        font-size: 87.5%;
+    }
+
+    #balance {
+        display: grid; /*display: grid,  display: flex: Um do lado do outro */
+        grid-template-columns: repeat(3, 1fr); /* 1fr 1fr 1fr As frações sobre os cards */
+        gap: 1rem; /* espaço entre as colunas */
+    }
 }
