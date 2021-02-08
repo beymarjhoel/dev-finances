@@ -71,33 +71,9 @@
 						<th></th> <!-- coluna a + -->
 					</tr>
 				</thead>
+				
 				<tbody>
-					<tr>
-						<td class="description">Luz</td>
-						<td class="expense">- R$ 500,00</td>
-						<td class="date">31/01/2021</td>
-						<td>
-							<img src="./assets/minus.svg" alt="Remover Transação">
-						</td>
-					</tr>
-
-					<tr>
-						<td class="description">Criação Web Site</td>
-						<td class="income">R$ 5.000,00</td> <!-- income é entrada de dinheiro-->
-						<td class="date">31/01/2021</td>
-						<td>
-							<img src="./assets/minus.svg" alt="Remover Transação">
-						</td>
-					</tr>
-
-					<tr>
-						<td class="description">Internet</td>
-						<td class="expense">- R$ 500,00</td> <!-- expense é saída de dinheiro-->
-						<td class="date">31/01/2021</td>
-						<td>
-							<img src="./assets/minus.svg" alt="Remover Transação">
-						</td>
-					</tr>
+					  	
 				</tbody>
 			</table>
 		</section>
@@ -157,22 +133,7 @@
 		<p>dev.finance$</p>
 	</footer>
 
-	<script>
-		const Modal = {		/* Definição de um novo objeto*/
-			  	open() {
-							/* Abrir Modal */
-							/* Adicionar a class active ao modal */
-							/* document.querySelector é uma funcionalidade que precisa de um argumento = Faça uma busca no documento inteiro */
-							/* classList = Função add com o argumento, irá adicionar a class active que está no documento */
-							/* Documento, pesquise dentro de você, pelo seletor que quero colocar agora */
-					document.querySelector('.modal-overlay').classList.add('active') 				},
-				close() {
-							/* Fechar Modal */
-							/* Remover a class active do modal */
-					document.querySelector('.modal-overlay').classList.remove('active') 	
-				}
-		}
-	</script>
+	<script src="./scripts.js"></script>
 
 </body>
 
