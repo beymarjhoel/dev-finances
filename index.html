@@ -2,28 +2,28 @@
 <html lang="pt-br">
 
 <head>
-	<title>dev.finance$</title>
+	<title> dev.finance$ </title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./styles.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link
 		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
 		rel="stylesheet">
-
 </head>
 
 <body>
 
 	<header>
-		<img src="assets/logo.svg" alt="Logo Dev Finances">
 		<!-- alt = alternativa, ajuda em acessibilidade, não pode enxergar, mas o robozinho irá ler -->
+		<img src="assets/logo.svg" alt="Logo Dev Finances">
+
 	</header>
 
 	<main class="container">
 
 		<section id="balance">
 
-			<h2 class="sr-only">Balanços</h2>
+			<h2 class="sr-only"> Balanços </h2>
 
 			<div class="card">
 				<h3>
@@ -32,7 +32,7 @@
 					</span>
 					<img src="./assets/income.svg" alt="Imagens de entradas">
 				</h3>
-				<p>R$: 5.000,00</p>
+				<p id="incomeDisplay"> R$ 0,00 </p>
 			</div>
 
 			<div class="card">
@@ -42,7 +42,7 @@
 					</span>
 					<img src="./assets/expense.svg" alt="Imagens de total">
 				</h3>
-				<p>R$: 2.000,00</p>
+				<p id="expenseDisplay"> R$ 0,00 </p>
 			</div>
 
 			<div class="card total">
@@ -52,77 +52,67 @@
 					</span>
 					<img src="./assets/total.svg" alt="Imagens de entradas">
 				</h3>
-				<p>R$: 3.000,00</p>
+				<p id="totalDisplay"> R$ 0,00 </p>
 			</div>
 
 		</section>
 
 		<section id="transaction">
-			<h2 class="sr-only">Transações</h2>
-
-			<a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>	<!-- onclick = ativar evento -->
+			<h2 class="sr-only"> Transações </h2>
+			<!-- onclick = ativar evento -->
+			<a href="#" onclick="Modal.open()" class="button new"> + Nova Transação </a>
 
 			<table id="data-table">
 				<thead>
 					<tr>
-						<th>Descrição</th>
-						<th>Valor</th>
-						<th>Data</th>
-						<th></th> <!-- coluna a + -->
+						<th> Descrição </th>
+						<th> Valor </th>
+						<th> Data </th>
+						<!-- coluna a + -->
+						<th></th>
 					</tr>
 				</thead>
-				
+
 				<tbody>
-					  	
+
 				</tbody>
 			</table>
 		</section>
 
 	</main>
 
-	<div class="modal-overlay"> <!-- Camada de tudo, preta - transparente / class active para quando tiver a classe active aparecer, quando não, sumir -->
-		<div class="modal"> <!-- Camada da caixa branca -->
+	<!-- Camada de tudo, preta - transparente / class active para quando tiver a classe active aparecer, quando não, sumir -->
+	<div class="modal-overlay">
+		<!-- Camada da caixa branca -->
+		<div class="modal">
 			<div id="form">
-				<h2>Nova Transação</h2>
-				<form action="">
+				<h2> Nova Transação </h2>
+				<form action="" onsubmit="Form.submit(event)">
 
 					<div class="input-group">
-						<label 
-							class = "sr-only" 
-						   	for = "description">Descrição</label> <!-- Par o leitor de tela ler e indicar que é descrição -->
-						<input 
-							type = "text" 
-							id = "description"
-							name = "description"
-							placeholder = "Descrição">
+						<!-- Par o leitor de tela ler e indicar que é descrição -->
+						<label class="sr-only" for="description"> Descrição </label>
+						<input type="text" id="description" name="description" placeholder="Descrição">
 					</div>
 
 					<div class="input-group">
-						<label 
-							class = "sr-only" 
-							for = "amount">Valor</label> <!-- Par o leitor de tela ler e indicar que é valor 1:43 video 2-->
-					 	<input 
-						 	type = "number"
-							step = "0.01" 
-							id = "amount"
-							name = "amount"
-							placeholder = "0,00">
-						<small class="help">Use o sinal - (negativo) para despesas e (vírgula) para esses decimais.</small>
+						<!-- Par o leitor de tela ler e indicar que é valor -->
+						<label class="sr-only" for="amount"> Valor </label>
+						<input type="number" step="0.01" id="amount" name="amount" placeholder="0,00">
+
+						<small class="help"> Use o sinal - (negativo) para despesas e (vírgula) para esses
+							decimais.</small>
 					</div>
-					
+
 					<div class="input-group">
-						<label 
-							class = "sr-only" 
-						   	for = "date">Data</label> <!-- Par o leitor de tela ler e indicar que é data -->
-						<input 
-							type = "date" 
-							id = "date"
-							name = "date">
+						<!-- Par o leitor de tela ler e indicar que é data -->
+						<label class="sr-only" for="date"> Data </label>
+						<input type="date" id="date" name="date">
 					</div>
 
 					<div class="input-group actions">
-						<a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
-						<button>Salvar</button>
+						<a href="#" onclick="Modal.close()" class="button cancel"> Cancelar </a>
+						<button> Salvar </button>
 					</div>
 				</form>
 			</div>
@@ -130,7 +120,7 @@
 	</div>
 
 	<footer>
-		<p>dev.finance$</p>
+		<p> dev.finance$ </p>
 	</footer>
 
 	<script src="./scripts.js"></script>
